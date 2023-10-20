@@ -1,17 +1,20 @@
-
-import './App.css';
-import Menu from './Menu';
-import { useState } from 'react';
-import MainContent from './MainContent';
+import "./App.css";
+import Menu from "./Menu";
+import MainContent from "./MainContent";
+import { PracticeProvider } from "./PracticeContext"; // Importa PracticeProvider
 
 function App() {
-  const [practiceSelected, setPracticeSelected] = useState('#practica_1');
+  // Elimina el estado local de practiceSelected y la función setPracticeSelected
+  // const [practiceSelected, setPracticeSelected] = useState("#practica_1");
+
   // JSX
   return (
-    <div>
-      <Menu onOptionSelected={(t) => { setPracticeSelected(t) }} />
-      <MainContent practiceSelected={practiceSelected} />
-    </div>
+    <PracticeProvider> {/* Envuelve la aplicación con PracticeProvider */}
+      <div>
+        <Menu />
+        <MainContent />
+      </div>
+    </PracticeProvider>
   );
 }
 
